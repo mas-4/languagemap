@@ -1,5 +1,4 @@
 import React from "react";
-import { scaleLinear } from "d3-scale";
 import {
     ComposableMap,
     Geographies,
@@ -8,10 +7,6 @@ import {
 
 const geoUrl =
     "https://raw.githubusercontent.com/deldersveld/topojson/master/world-countries-sans-antarctica.json";
-
-const colorScale = scaleLinear()
-    .domain([0, 1])
-    .range(["#8aff8d", "#008204"]);
 
 const Map = ({ data }) => {
 
@@ -30,7 +25,7 @@ const Map = ({ data }) => {
                                     <Geography
                                         key={geo.rsmKey}
                                         geography={geo}
-                                        fill={data[geo.properties['Alpha-2']] ? colorScale(data[geo.properties['Alpha-2']]) : "#F5F4F6"}
+                                        fill={data.includes(geo.properties['Alpha-2']) ? 'green' : "#F5F4F6"}
                                     />
                                 );
                             })

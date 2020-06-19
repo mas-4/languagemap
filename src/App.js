@@ -4,18 +4,17 @@ import Map from './Map';
 import { languages } from './languages'
 
 function App() {
-    const [data, setData] = useState({});
+    const [data, setData] = useState([]);
+    const [currentLanguages, setCurrentLanguages] = useState([]);
 
     function onClick(language) {
-        const tmp = Object.assign({}, data)
-        const dist = languages[language];
-        Object.keys(dist).forEach(key => {
-            if (key in tmp) {
-                tmp[key] += dist[key];
-            } else {
-                tmp[key] = dist[key];
+        const tmp = data.slice()
+        const codes = languages[language].slice()
+        for (let i = 0; i < codes.length; i++) {
+            if (!tmp.includes(codes[i])) {
+                tmp.push(codes[i])
             }
-        })
+        }
         setData(tmp);
     }
 
@@ -25,7 +24,7 @@ function App() {
             <ul>
                 {Object.keys(languages).map((key, index) => {
                     return(
-                        <li>
+                        <li key={key}>
                             <button onClick={() => onClick(key)}>
                                 {key}
                             </button>
