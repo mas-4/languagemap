@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import { scaleLinear } from "d3-scale";
-import { languages } from "./languages";
 import {
     ComposableMap,
     Geographies,
@@ -14,9 +13,7 @@ const colorScale = scaleLinear()
     .domain([0, 1])
     .range(["#8aff8d", "#008204"]);
 
-const Map = () => {
-    const [data, setData] = useState(languages['English']);
-    console.log(data)
+const Map = ({ data }) => {
 
     return (
         <ComposableMap
