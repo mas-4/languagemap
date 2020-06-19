@@ -8,15 +8,15 @@ import {
 } from "react-simple-maps";
 
 const geoUrl =
-    //"https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json";
     "https://raw.githubusercontent.com/deldersveld/topojson/master/world-countries-sans-antarctica.json";
 
 const colorScale = scaleLinear()
-    .domain([0.29, 0.68])
-    .range(["#ffedea", "#ff5233"]);
+    .domain([0, 1])
+    .range(["#8aff8d", "#008204"]);
 
 const Map = () => {
     const [data, setData] = useState(languages['English']);
+    console.log(data)
 
     return (
         <ComposableMap
