@@ -4,6 +4,7 @@ import './App.css';
 import Map from './Map';
 import { languages } from './languages'
 import CheckboxesGroup from './Checkboxes'
+import Tags from './Autocomplete'
 
 // The default selected statuses
 const DFLT = ['de facto', 'majority', 'official'];
@@ -46,14 +47,8 @@ function App() {
         [currentLanguages, currentStatuses]
     )
 
-    function changeLanguage(lang) {
-        const tmp = currentLanguages.slice();
-        if (tmp.includes(lang)) {
-            tmp.splice(tmp.indexOf(lang), 1);
-        } else {
-            tmp.push(lang);
-        }
-        setCurrentLanguages(tmp);
+    function changeLanguage(langs) {
+        setCurrentLanguages(langs);
     }
     function changeStatus(stat) {
         const tmp = currentStatuses.slice();
@@ -68,17 +63,16 @@ function App() {
     return (
         <div className="App">
             <Map data={data}/>
+            <Tags
+                options={languageOptions}
+                current={currentLanguages}
+                handleChange={changeLanguage}
+            />
             <CheckboxesGroup
                 options={statusOptions}
                 current={currentStatuses}
                 handleChange={changeStatus}
                 title="Language Status"
-            />
-            <CheckboxesGroup
-                options={languageOptions}
-                current={currentLanguages}
-                handleChange={changeLanguage}
-                title="Language"
             />
         </div>
     );
