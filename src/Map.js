@@ -15,8 +15,10 @@ const Map = ({ data }) => {
             projection="geoMercator"
             projectionConfig={{
                 rotate: [-10, 0, 0],
-                scale: 100
+                scale: 100,
             }}
+            width={900}
+            style={{  position: 'absolute', zIndex: '-1' }}
         >
                 <Geographies geography={geoUrl}>
                     {({ geographies }) =>
