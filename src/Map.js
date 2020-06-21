@@ -9,6 +9,8 @@ const geoUrl =
     "https://raw.githubusercontent.com/deldersveld/topojson/master/world-countries-sans-antarctica.json";
 
 const Map = ({ data }) => {
+    const Active = 'green';
+    const Inactive = '#dbdbdb';
 
     return (
         <ComposableMap
@@ -27,7 +29,7 @@ const Map = ({ data }) => {
                                     <Geography
                                         key={geo.rsmKey}
                                         geography={geo}
-                                        fill={data.includes(geo.properties['Alpha-2']) ? 'green' : "#F5F4F6"}
+                                        fill={data.includes(geo.properties['Alpha-2']) ? Active : Inactive}
                                     />
                                 );
                             })
