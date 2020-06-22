@@ -29,6 +29,7 @@ export default function CheckboxesGroup({ options, current, handleChange, title 
                                 key={opt}
                                 control={
                                     <Checkbox
+                                        color="primary"
                                         checked={current.includes(opt)}
                                         onChange={() => handleChange(opt)}
                                         name={opt}
